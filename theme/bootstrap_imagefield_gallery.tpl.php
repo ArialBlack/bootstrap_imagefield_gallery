@@ -22,8 +22,11 @@
  
  
  */
+
+$gal_id = generateRandomString();
+ 
 ?>
-<div id="bootstrapimagefieldgallery" class="carousel slide" data-ride="carousel">
+<div id="bootstrapimagefieldgallery_<?php print $gal_id; ?>" class="bootstrapimagefieldgallery carousel slide" data-ride="carousel" data-interval="false">
       <!-- Indicators -->
       <ol class="carousel-indicators">
        <?php foreach ($slides as $id => $data): ?>
@@ -34,7 +37,13 @@
       <div class="carousel-inner" role="listbox">
        
 	   <?php foreach ($slides as $id => $data): ?>
-	    <div class="item">
+       <?php 
+            
+            if ($id == 1) 
+                $activeclass='active';
+           else $activeclass='';   
+       ?>
+	    <div class="item <?php print $activeclass; ?>">
            <?php print $data['image']; ?>
           <?php if (!empty($data['title']) || !empty($data['alt'])): ?>
           <div class="container">
@@ -49,8 +58,8 @@
       <?php endforeach; ?>
 </div>
 
-      <a class="left carousel-control" href="#bootstrapimagefieldgallery" role="button" data-slide="prev"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></a>
-      <a class="right carousel-control" href="#bootstrapimagefieldgallery" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+      <a class="left carousel-control" href="#bootstrapimagefieldgallery_<?php print $gal_id; ?>" role="button" data-slide="prev"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></a>
+      <a class="right carousel-control" href="#bootstrapimagefieldgallery_<?php print $gal_id; ?>" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
     </div>
 
 

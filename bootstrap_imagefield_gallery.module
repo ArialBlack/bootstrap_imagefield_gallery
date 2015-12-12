@@ -2,6 +2,16 @@
 /* bootstrap_imagefield_gallery */
  include_once DRUPAL_ROOT .'/'. drupal_get_path('module', 'bootstrap_imagefield_gallery') .'/includes/bootstrap_imagefield_gallery_imagestyles.inc'; 
  
+ function generateRandomString($length = 10) {
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    }
+    return $randomString;
+}
+
  function bootstrap_imagefield_gallery_field_formatter_info() {
   return array(
     'bootstrap_imagefield_gallery_default' => array(
